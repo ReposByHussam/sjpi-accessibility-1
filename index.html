@@ -27,7 +27,6 @@ Det finns många sätt att göra en webbplats mer tillgänglig, till exempel att
 -->
 
 <!doctype html>
-<!-- Vad händer när man kommenterar bort språket? -->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -35,6 +34,7 @@ Det finns många sätt att göra en webbplats mer tillgänglig, till exempel att
     <link rel="stylesheet" href="style.css" />
     <!-- Endast en `<title>` används; flera kan orsaka oväntat beteende och påverka SEO samt tillgänglighet negativt. -->
     <title>A11y News</title>
+       <script src="script.js" defer></script>
   </head>
 
   <body>
@@ -69,62 +69,72 @@ Det finns många sätt att göra en webbplats mer tillgänglig, till exempel att
         </div>
       </nav>
     </header>
-
-    <!-- Dold text och klickbar div. 
-     .hidden-text är nästan osynlig p.g.a. låg opacity och roterad tex -->
-    <div class="button">Click here!</div>
-    <div class="container">
-      <!-- Två <h1>-taggar i .container kan påverka tillgänglighet och SEO. -->
-      <h1>A11y News</h1>
-      <h1></h1>
-
-      <div class="article">
-        <!-- <marquee>(rullande text) kan vara en intressant effekt på en hemsida, men det kan också vara distraherande för besökarna. -->
-        <marquee class="headline">Breaking News: ...!</marquee>
+    <main id="main-content" class="wrapper flow">
+      <section id="top-news" class="hero-card" aria-labelledby="hero-heading">
+        <p class="section-label">Latest news</p>
+        <h2 id="hero-heading">Breaking News without the blinking lights</h2>
         <p>
-          Scientists have discovered a new deep-sea fish with bioluminescent
-          fins off the coast of Australia. The unnamed species is believed to
-          have unique traits that could contribute to future medical research
-          and biotechnology.
+          This version of the page is built so that it is easy to understand,
+          navigate and to be used with assistive technologies.
         </p>
-        <a href="404.html">Click here!</a>
+        <a class="button-link" href="#science-news">Read The Head-article</a>
+   
+      <section aria-labelledby="latest-heading" class="flow">
+        <h2 id="latest-heading">Latest news</h2>
+        <div class="news-grid">
+            <article id="science-news" class="card" aria-labelledby="article-1-heading">
+                <p class="kicker">Science</p>
+                <h3 id="article-1-heading">New Deep-Sea Fish Discovered with Bioluminescent Fins on the coast of Australia</h3>
+                  <p>
+                     Scientists have discovered a new deep-sea fish with bioluminescent
+                     fins off the coast of Australia. The unnamed species is believed to
+                    have unique traits that could contribute to future medical research
+                    and biotechnology.
+                    </p>
+                    <a href="#article-1-heading">Read more</a>
+
+            </article>
+                   <article id="world-news" class="card" aria-labelledby="article-2-heading">
+                <p class="kicker">World</p>
+                <h3 id="article-2-heading">Lunar new year: Celebrate with us!</h3>
+                  <p>
+                     Festivals, family activities and delicious food are all part of the Lunar New Year celebrations. Join us as we explore the rich traditions and vibrant festivities that mark this special occasion.
+                    </p>
+                    <a href="#article-2-heading">Read more about the celeberations</a>
+                    
+                     </article>
+                       <article id="culture-news" class="card" aria-labelledby="article-3-heading">
+                <p class="kicker">Culture</p>
+                <h3 id="article-3-heading">Accessible design becomes more important in the digital culture</h3>
+                  <p>
+                    Museeums and cultural institutions are increasingly recognizing the importance of accessible design in their digital offerings. From virtual tours to online exhibits, these institutions are working to ensure that their content is inclusive and accessible to all audiences.
+                    </p>
+                    <a href="#article-3-heading">Read more about the development</a>
+                     </article> 
+                    </div>
+           </section>
+           <section class="card media-card" aria-labelledby="image-heading">
+            <div>
+                <p class="kicker">Picture Example</p>
+                <h2 id="image-heading">A picture with a relevant alternative text</h2>
+                <p>
+                    images are supposed to support the context, not just be there for decoration. Alternative text should be descriptive and provide context for the image, allowing users with visual impairments to understand its content and purpose.
+                </p>
+            </div>
+            <img src="images/chest.png"
+            alt="illustration of a treasure chest"
+            width="250"
+            height="256"
+            loading="lazy"
+            />
+           </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrapper footer-inner">
+        <p>&copy; 2026 A11y News. All rights reserved.</p>
+        <a href="#main-content">Back to the main content</a>
       </div>
-
-      <!-- Klicka på artikeln för att visa ett meddelande, men den utför egentligen inget. -->
-      <div class="article" onclick="alert('This does nothing!')">
-        <div>Lunar New Year: Celebrate with us!</div>
-
-        <!-- Bilder visas inte, varför? -->
-        <div class="image-container">
-          <img src="/images/ocean.jpg" />
-          <img src="/images/city.jpg" />
-          <img src="/images/family.jpg" />
-        </div>
-
-        <p>Access the news by pressing the images</p>
-      </div>
-
-      <!-- Allt för stor bild. För att motverka prestanda problem, ha koll på storleken på bilden -->
-      <div class="article" style="display: none">
-        <p class="headline">Se en 50MB bild ladda långsamt!</p>
-        <img
-          src="http://upload.wikimedia.org/wikipedia/commons/3/3f/JPEG_example_flower.jpg"
-          width="50000"
-        />
-      </div>
-
-      <!-- Videor kräver mycket prestanda, kan vi ändra eller ta bort för att åstakomma bättre resultat -->
-      <div class="article">
-        <video
-          autoplay
-          muted
-          loop
-          src="https://www.w3schools.com/html/mov_bbb.mp4"
-        ></video>
-        <img src="http://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" />
-      </div>
-    </div>
-
-    <script src="script.js" defer></script>
+ 
   </body>
 </html>
