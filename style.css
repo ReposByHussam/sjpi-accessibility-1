@@ -37,3 +37,28 @@ img {
 .flow > * + * {
   margin-top: 1.5rem;
 }
+
+.skip-link {
+  position: absolute;
+  top: -3rem;
+  left: 1rem;
+  background: var(--text);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  z-index: 1000;
+  border-radius: 0.5rem;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+.site-header {
+  background: var(--surface);
+
+  border-bottom: 1px solid var(--border);
+}
+.header-inner {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
+}
