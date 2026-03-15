@@ -39,45 +39,43 @@ Det finns många sätt att göra en webbplats mer tillgänglig, till exempel att
 
   <body>
     <!-- Navigeringsmeny med dubblett-ID:n, inkonsekvent tabindex, och brutna länkar till en 404-sida. -->
-    <nav class="navigation">
-      <span class="nav-item" id="1" tabindex="-1"
-        ><a href="404.html" target="_blank">Home</a></span
-      >
-      <span class="nav-item" id="1" tabindex="-1"
-        ><a href="404.html">World</a></span
-      >
-      <span class="nav-item" id="1"><a href="404.html">Sports</a></span>
-      <span class="nav-item" id="1"
-        ><a href="404.html" target="_blank">Entertainment</a></span
-      >
-    </nav>
+    <header class="header">
+      <div class="wrapper header-inner">
+        <div>
+          <p class="eyebrow">Accessibility news-site!</p>
+          <h1 class="site-title">A11y News</h1>
+          <p class="site-intro">Your source for accessible news</p>
+        </div>
+        <form class="search-form" role="search" aria-label="search on the page">
+          <label for="site-search">Search for articles</label>
+          <div class="search-row">
+            <input
+              type="search"
+              id="site-search"
+              name="q"
+              placeholder="Search articles..."
+            />
+            <button type="submit">Search</button>
+          </div>
+        </form>
+      </div>
 
+      <nav class="primary-nav" aria-label="primary-navigation">
+        <div class="wrapper nav-list">
+          <a href="#top-news">Home</a>
+          <a href="#world-news">World</a>
+          <a href="#science-news">Science</a>
+          <a href="#culture-news">Culture</a>
+        </div>
+      </nav>
+    </header>
     <!-- Svåråtkomligt inputfällt -->
     <div class="input-container">
       <input type="text" placeholder="Enter text" />
       <button><a href="#">Search</a></button>
     </div>
 
-    <!-- Dold text och klickbar div. 
-     .hidden-text är nästan osynlig p.g.a. låg opacity och roterad tex -->
-    <p class="hidden-text">This text is invisible.</p>
-    <div class="button">Click here!</div>
-    <div class="container">
-      <!-- Två <h1>-taggar i .container kan påverka tillgänglighet och SEO. -->
-      <h1>A11y News</h1>
-      <h1></h1>
-
-      <div class="article">
-        <!-- <marquee>(rullande text) kan vara en intressant effekt på en hemsida, men det kan också vara distraherande för besökarna. -->
-        <marquee class="headline">Breaking News: ...!</marquee>
-        <p>
-          Scientists have discovered a new deep-sea fish with bioluminescent
-          fins off the coast of Australia. The unnamed species is believed to
-          have unique traits that could contribute to future medical research
-          and biotechnology.
-        </p>
-        <a href="404.html">Click here!</a>
-      </div>
+ 
 
       <!-- Klicka på artikeln för att visa ett meddelande, men den utför egentligen inget. -->
       <div class="article" onclick="alert('This does nothing!')">
